@@ -88,6 +88,40 @@ def binary_search(search_list, key):
     return _binary_search(0, list_last_index)
 
 
+def binary_search_func(function, key, eps, imin, imax):
+    """Binary search for monotonically increasing function.
+
+    """
+    # FIXME: Doctests
+
+    def _mid_point(xmin, xmax):
+        return (xmin + xmax) / 2
+
+    xmin, xmax = imin, imax
+    previous_x = None
+
+    while True:
+        current_x = _mid_point(xmin, xmax)
+
+        current_value = function(current_x)
+
+        if abs(current_value - key) < eps:
+            return current_x
+
+        if previous_x is not None:
+            if abs(current_x - previous_x) < eps:
+                break
+
+        if key < current_value:
+            xmax = current_x
+        else:
+            xmin = current_x
+
+        previous_x = current_x
+
+    return None
+
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
