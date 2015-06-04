@@ -68,7 +68,7 @@ def md5(msg):
         msg += chr(0x00)
 
     len_long = original_length % (2 ** 64)
-    msg += pack("<Q", len_long & 0xFFFFFFFFFFFFFFFF) # , (len_long >> 64) & 0xFFFFFFFFFFFFFFFF
+    msg += pack("<Q", len_long & 0xFFFFFFFFFFFFFFFF)
 
     chunk_offset = 0
     while True:
