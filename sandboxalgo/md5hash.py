@@ -11,7 +11,7 @@ from struct import pack, unpack
 
 class dword(int):
     def __or__(self, other):
-        return dword((int(self) | other & 0xFFFFFFFF) & 0xFFFFFFFF)
+        return dword((int(self) | (other & 0xFFFFFFFF)) & 0xFFFFFFFF)
 
     def __and__(self, other):
         return dword((int(self) & (other & 0xFFFFFFFF)) & 0xFFFFFFFF)
