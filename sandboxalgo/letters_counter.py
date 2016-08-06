@@ -9,6 +9,9 @@ def count_letters(letters_in):
     >>> count_letters('aaaaabbbbccccccaaaaaaa')
     '5a4b6c7a'
 
+    >>> count_letters('xxxxyycdd')
+    '4x2y1c2d'
+
     >>> count_letters('')
     ''
     """
