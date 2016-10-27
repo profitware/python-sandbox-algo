@@ -67,14 +67,14 @@ class DependencyTree(dict):
     @property
     def dependency_sequence(self):
         routes_dict = dict()
-        end_routes = list()
+        end_nodes = list()
         dependency_sequence_list = list()
 
         for start in self.iterkeys():
             dependency_routes = self._dependency_routes(start)
 
             if len(dependency_routes) == 0:
-                end_routes.append(start)
+                end_nodes.append(start)
 
             for route in dependency_routes:
                 routes_dict.setdefault(len(route), []).append(route)
@@ -86,7 +86,7 @@ class DependencyTree(dict):
                     dependency_sequence_list.append(last_dependency)
 
         return filter(lambda d: d not in dependency_sequence_list,
-                      end_routes) + dependency_sequence_list
+                      end_nodes) + dependency_sequence_list
 
 
 if __name__ == '__main__':
